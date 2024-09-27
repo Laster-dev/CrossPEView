@@ -2,7 +2,7 @@ namespace CrossPEView.Page;
 
 using CrossPEView.Control;
 using PeNet;
-using static CrossPEView.Page.ExportPage;
+
 
 public partial class SectionPage : ContentPage
 {
@@ -15,7 +15,7 @@ public partial class SectionPage : ContentPage
 
     private void ContentPage_Loaded(object sender, EventArgs e)
     {
-        if (_pefile.ExportedFunctions != null)
+        if (_pefile.ImageSectionHeaders != null)
         {
 
             foreach (var section in _pefile.ImageSectionHeaders)
