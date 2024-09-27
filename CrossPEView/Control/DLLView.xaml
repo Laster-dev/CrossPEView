@@ -1,0 +1,36 @@
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrossPEView.Control.DLLView"
+             BackgroundColor="#1e1e1e"
+             Padding="10"
+            >
+
+    <Frame BackgroundColor="#1e1e1e" CornerRadius="10">
+        <VerticalStackLayout>
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="m_Name" 
+                       FontSize="18" 
+                       FontAttributes="Bold" 
+                       TextColor="#ac99ea" 
+                       HorizontalOptions="StartAndExpand" 
+                       />
+
+                <StackLayout Orientation="Horizontal" Spacing="15" Grid.Row="1">
+                    <Label x:Name="ID" 
+                           FontSize="14" 
+                           TextColor="#ac99ea" 
+                           VerticalOptions="Center"/>
+                    <Label x:Name="m_IATOffset" 
+                           FontSize="14" 
+                           TextColor="#ac99ea" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </Frame>
+</ContentView>

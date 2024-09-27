@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrossPEView.Page.MainPage">
+    <StackLayout>
+        <Button Text="打开文件" FontSize="25" WidthRequest="250" HeightRequest="250" Clicked="Button_Clicked" IsVisible="True" HorizontalOptions="Center"/>
+        
+    </StackLayout>
+</ContentPage>
