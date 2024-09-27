@@ -2,11 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CrossPEView.Page.DoMainPage"
+             
              Title="DoMain">
-    <VerticalStackLayout Margin="2">
-        <Button Text="导入表"  Margin="2" Clicked="Button_Clicked"/>
-        <Button  Margin="2" Text="导出表"/>
-        <Button Margin="2" Text="段"/>
-        <Button Margin="2" Text="数字签名校验"/>
-    </VerticalStackLayout>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+        <VerticalStackLayout Margin="2" Grid.Row="0">
+
+            <Frame BackgroundColor="#ab98e9" Margin="2" CornerRadius="10" Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="12*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0">
+                        <Label Text="文件大小：" />
+                        <Label Text="文件类型：" />
+                        <Label Text="目标机：" />
+                        <Label Text="时间戳：" />
+                        <Label Text="基础映像：" />
+                        <Label Text="校验和：" />
+                        <Label Text="子系统：" />
+                        <Label Text="子系统版本：" />
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label x:Name="m_filesize" />
+                        <Label x:Name="m_filetype" />
+                        <Label x:Name="m_targetMachine" />
+                        <Label x:Name="m_timestamp" />
+                        <Label x:Name="m_baseImage" />
+                        <Label x:Name="m_checksum" />
+                        <Label x:Name="m_subsystem" />
+                        <Label x:Name="m_subsystemVersion" />
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
+            <Button Text="导入表->"  Margin="2" Clicked="Button_Clicked"/>
+            <Button  Margin="2" Text="导出表->" Clicked="Button_Clicked_1"/>
+            <Button Margin="2" Text="段->" Clicked="Button_Clicked_3"/>
+            <Button Margin="2" Text="数字签名校验->" Clicked="Button_Clicked_2"/>
+        </VerticalStackLayout>
+        <StackLayout Grid.Row="1" VerticalOptions="End" Margin="15,0,15,10">
+            <Label x:Name="m_MD5" />
+            <Label x:Name="m_sha1" />
+            <Label x:Name="m_sha256" LineBreakMode="WordWrap" />
+
+        </StackLayout>
+    </Grid>
+   
 </ContentPage>

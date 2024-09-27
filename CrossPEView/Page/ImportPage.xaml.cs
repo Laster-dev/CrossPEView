@@ -49,10 +49,10 @@ namespace CrossPEView.Page
                 {
                     Header = new Label
                     {
-                        Text = group.ModuleName,
-                        FontAttributes = FontAttributes.Bold,
+                        Text = ">   "+group.ModuleName,
+
                         BackgroundColor = Color.FromRgba("#1e1e1e"),
-                        Padding = new Thickness(10),
+                        Padding = new Thickness(3),
                         TextColor = Colors.White,
                     },
                     // 创建一个新的StackLayout，并设置其背景颜色、内边距和外边距
@@ -60,19 +60,12 @@ namespace CrossPEView.Page
                     {
                         // 设置背景颜色为#1e1e1e
                         BackgroundColor = Color.FromRgba("#1e1e1e"),
-                        // 设置内边距为10
-                        Padding = 3,
-                        // 设置外边距为5
-                        Spacing = 2
                     }
                 };
 
                 foreach (var func in group.Functions)
                 {
-                    var dllView = new DLLView(func.FunctionName, func.Hint.ToString(), func.IATOffset.ToString())
-                    {
-                        Margin = new Thickness(0, 5) // ���Ӽ��
-                    };
+                    var dllView = new DLLView(func.FunctionName, func.Hint.ToString(), func.IATOffset.ToString());
                     (expander.Content as StackLayout).Children.Add(dllView);
                 }
 
@@ -81,6 +74,10 @@ namespace CrossPEView.Page
 
         }
 
+        private void ContentPage_Loaded_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public static class ViewExtensions
@@ -101,7 +98,7 @@ namespace CrossPEView.Page
 
     public class Function
     {
-        public string FunctionName { get; set; }
+        public string? FunctionName { get; set; }
         public int Hint { get; set; }
         public uint IATOffset { get; set; }
     }
