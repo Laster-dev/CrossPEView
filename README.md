@@ -1,27 +1,23 @@
-[![license](https://img.shields.io/github/license/secana/penet.svg)](https://raw.githubusercontent.com/secana/PeNet/master/LICENSE)
-[![NuGet](https://img.shields.io/nuget/v/PeNet.svg)](https://www.nuget.org/packages/PeNet/)
-[![NuGet](https://img.shields.io/nuget/dt/PeNet.svg)](https://www.nuget.org/packages/PeNet/)
-[![Build](https://img.shields.io/azure-devops/build/secana/PeNet/2.svg)](https://dev.azure.com/secana/PeNet/_build?definitionId=2)
-[![Test](https://img.shields.io/azure-devops/tests/secana/PeNet/2.svg)](https://dev.azure.com/secana/PeNet/_build?definitionId=2)
-[![BuiltWithDot.Net shield](https://builtwithdot.net/project/492/penet-csharp-net-standard-file-parser/badge)](https://builtwithdot.net/project/492/penet-csharp-net-standard-file-parser)
+# CrossPEView
 
-![PeNet Logo](https://raw.githubusercontent.com/secana/PeNet/master/resource/linkedin_banner_image_2.png "PeNet - PE analysis made easy")
-PeNet is a parser for Windows Portable Executable headers. It completely written in C# and does not rely on any native Windows APIs.
-Furthermore it supports the creation of Import Hashes (ImpHash), which is a feature often used in malware analysis. You can extract Certificate Revocation List, compute different hash sums and other useful stuff for working with PE files.
+**CrossPEView** 是一个基于 **PeNet** 库开发的跨平台 PE 查看工具，使用 **.NET MAUI** 框架，支持 Windows、macOS、Android 和 iOS。该工具旨在为移动平台提供 PE 文件分析功能，使用户能够方便地查看和解析 Windows 可执行文件的结构和信息。
 
-## Getting Started & API Reference
+## 背景
 
-The API reference can be found here: [PeNet Documentation & API Reference](http://secana.github.io/PeNet).
+随着软件开发的不断进步，**PE（Portable Executable）** 文件格式在 Windows 操作系统中广泛应用于应用程序、动态链接库和驱动程序的分发与执行。然而，PE 文件的结构复杂，包含丰富的信息，包括导入表、导出表和资源等。对这些文件的深入分析对开发人员、安全研究人员和逆向工程师都具有重要意义。传统的 PE 文件查看工具多为桌面应用，缺乏跨平台支持，限制了在移动设备上的使用场景。
 
-For an overview of *PeNet* or to analyze PE files go to: [penet.io](http://penet.io)
+## 意义
 
-## Continuous Integration
+**CrossPEView** 旨在填补这一空白，提供一个跨平台的 PE 文件查看工具，使开发人员和安全研究人员能够随时随地分析 PE 文件。通过在移动平台上实现 PE 文件分析，不仅提高了工作效率，还增强了对软件安全性和兼容性的研究能力。此外，CrossPEView 能够帮助教育工作者在教学中使用该工具进行 PE 文件结构和安全性的演示，进一步推动 PE 文件分析的普及。
 
-The project is automatically build, tested and released with an [Azure Pipeline](https://dev.azure.com/secana/PeNet).
+## 开发工具
 
-To release a new version, push a tagged commit. For example:
+**CrossPEView** 使用了 **MAUI（Multi-platform App UI）** 作为开发框架，能够支持 Windows、macOS、Android 和 iOS 等多个平台，提供一致的用户体验。该框架简化了多平台开发的复杂性，使开发人员能够编写一次代码，便可在多种设备上运行。
 
- ```powershell
- git tag -a v2.0.0 -m 'Release version 2.0.0'
- git push origin v2.0.0
- ```
+## 使用的包
+
+- **PeNet**: 这是一个用于解析和分析 PE 文件的开源库，提供了丰富的 API 来读取 PE 文件的各个部分，包括文件头、导入表和导出表等。通过 [PeNet](https://github.com/secana/PeNet)，CrossPEView 能够轻松获取 PE 文件的结构和信息。
+
+## 结论
+
+**CrossPEView** 是一个创新性的工具，结合了强大的 **PeNet** 库和现代的跨平台开发框架，旨在提升 PE 文件分析的便捷性和可访问性。通过该工具，用户可以在不同设备上快速查看和分析 PE 文件，从而推动软件开发与安全研究领域的发展。
