@@ -65,7 +65,7 @@ namespace CrossPEView.Page
 
                 foreach (var func in group.Functions)
                 {
-                    var dllView = new DLLView(func.FunctionName, func.Hint.ToString(), func.IATOffset.ToString());
+                    var dllView = new DLLView(func.FunctionName, "序号："+func.Hint.ToString(), "偏移："+func.IATOffset.ToString());
                     (expander.Content as StackLayout).Children.Add(dllView);
                 }
 

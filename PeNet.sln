@@ -5,6 +5,7 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F4B3781-06A5-442E-A00C-926D0BC812D0}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
@@ -20,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeNet", "src\PeNet\PeNet.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeNet.Test", "test\PeNet.Test\PeNet.Test.csproj", "{2A160801-CC38-4986-AC00-B742ACC567D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPEView", "CrossPEView\CrossPEView.csproj", "{C87634F5-095B-4CF8-9C92-87358004F236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossPEView", "CrossPEView\CrossPEView.csproj", "{C87634F5-095B-4CF8-9C92-87358004F236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{89336C54-6A51-4EC1-BE08-3E07CEF1D366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +61,14 @@ Global
 		{C87634F5-095B-4CF8-9C92-87358004F236}.Release|x64.ActiveCfg = Release|Any CPU
 		{C87634F5-095B-4CF8-9C92-87358004F236}.Release|x64.Build.0 = Release|Any CPU
 		{C87634F5-095B-4CF8-9C92-87358004F236}.Release|x64.Deploy.0 = Release|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Debug|x64.Build.0 = Debug|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Release|x64.ActiveCfg = Release|Any CPU
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +76,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{12794D4D-98EA-4A5C-92EA-D3282790C3D3} = {C6BBC182-0EA7-4DEA-8D06-C7B27B863B92}
 		{2A160801-CC38-4986-AC00-B742ACC567D7} = {B7DE051E-5D6F-4209-8472-B8A407C3D257}
+		{89336C54-6A51-4EC1-BE08-3E07CEF1D366} = {B7DE051E-5D6F-4209-8472-B8A407C3D257}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDEF9B8E-AB65-440B-86B9-BF0BE9BE5993}

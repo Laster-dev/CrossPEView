@@ -10,8 +10,9 @@ public partial class ExportPage : ContentPage
     {
         InitializeComponent();
         _pefile = peFile;
+        LoadSignerInfo();
     }
-    private void ContentPage_Loaded(System.Object sender, System.EventArgs e)
+    private void LoadSignerInfo()
     {
         if (_pefile.ExportedFunctions != null)
         {
@@ -24,12 +25,15 @@ public partial class ExportPage : ContentPage
                     Address = exportFunction.Address,
                 };
 
-                var dllView = new DLLView(function.FunctionName, function.ordinal.ToString(), function.Address.ToString());
-                
+                var dllView = new DLLView(function.FunctionName,
+                                          "–Ú∫≈£∫" + function.ordinal.ToString(),
+                                          "µÿ÷∑:" + function.Address.ToString());
+
                 ExpanderStack.Children.Add(dllView);
             }
         }
     }
+    
 
     public class ExportedFunction
     {

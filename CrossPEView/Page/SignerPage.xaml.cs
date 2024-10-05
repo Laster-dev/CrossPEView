@@ -1,77 +1,40 @@
 namespace CrossPEView.Page;
 
+using PeNet;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+using PeNet.Header.Authenticode;
+
 public partial class SignerPage : ContentPage
 {
-    public SignerPage(byte[] peFileBytes)
+    public SignerPage(PeFile peFileBytes)
     {
         InitializeComponent();
-
-        string tempFilePath = null;
-        try
-        {
-            // 创建临时文件以便使用X509Certificate类
-            tempFilePath = Path.GetTempFileName();
-            File.WriteAllBytes(tempFilePath, peFileBytes);
-
-            // 尝试加载签名证书
-            X509Certificate2 certificate = null;
-            try
-            {
-                certificate = new X509Certificate2(tempFilePath);
-            }
-            catch (CryptographicException ex)
-            {
-                Signer.Text = "加载证书时发生错误: " + ex.Message;
-                return;
-            }
-
-            string str = "";
-
-            // 输出签名信息
-            str += "签名者: " + certificate.Subject + "\n";
-            str += "颁发者: " + certificate.Issuer + "\n";
-
-            // 验证签名有效性
-            bool isValid = VerifySignature(tempFilePath);
-            str += "签名有效性: " + (isValid ? "有效" : "无效") + "\n";
-
-            Signer.Text = str;
-        }
-        catch (Exception ex)
-        {
-            // 处理异常并显示错误信息
-            Signer.Text = "发生错误: " + ex.Message;
-        }
-        finally
-        {
-            // 删除临时文件
-            if (tempFilePath != null && File.Exists(tempFilePath))
-            {
-                File.Delete(tempFilePath);
-            }
-        }
+        LoadSignerInfo(peFileBytes);  // 加载签名信息
     }
 
-    public static bool VerifySignature(string filePath)
+    private void LoadSignerInfo(PeFile peFile)
     {
-        try
-        {
-            X509Certificate2 certificate = new X509Certificate2(filePath);
-            X509Chain chain = new X509Chain();
-            chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
-            chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
-            chain.ChainPolicy.VerificationFlags = X509VerificationFlags.NoFlag;
-            chain.ChainPolicy.VerificationTime = DateTime.Now;
+        // 获取 Authenticode 信息
+        var authenticodeInfo = new AuthenticodeInfo(peFile);
 
-            return chain.Build(certificate);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("验证签名时发生错误: " + ex.Message);
-            return false;
-        }
+        // 更新界面上的信息
+        UpdateUI(authenticodeInfo);
     }
 
+    private void UpdateUI(AuthenticodeInfo authenticodeInfo)
+    {
+        // 更新签名状态
+        string statusText = authenticodeInfo.IsAuthenticodeValid ? "Valid" : "Not Valid";
+        StatusLabel.Text = statusText;
+        StatusLabel.TextColor = authenticodeInfo.IsAuthenticodeValid ? Colors.Green : Colors.Red;
+
+        // 更新签名者序列号
+        SerialNumberLabel.Text = authenticodeInfo.SignerSerialNumber ?? "N/A";
+
+        // 获取签名证书信息
+        var signingCertificate = authenticodeInfo.SigningCertificate;
+        SubjectLabel.Text = signingCertificate?.Subject ?? "N/A";
+        IssuerLabel.Text = signingCertificate?.Issuer ?? "N/A";
+        ThumbprintLabel.Text = signingCertificate?.Thumbprint ?? "N/A";
+    }
 }
